@@ -3,7 +3,6 @@ package Levels;
 import city.cs.engine.*;
 import Collisions.Collision;
 import game.Game;
-import game.GameLevel;
 import Collisions.MobCollision;
 import org.jbox2d.common.Vec2;
 

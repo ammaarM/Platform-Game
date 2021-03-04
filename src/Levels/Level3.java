@@ -6,7 +6,6 @@ import city.cs.engine.SoundClip;
 import city.cs.engine.StaticBody;
 import Collisions.Collision;
 import game.Game;
-import game.GameLevel;
 import Collisions.MobCollision;
 import org.jbox2d.common.Vec2;
 

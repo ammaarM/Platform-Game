@@ -1,18 +1,12 @@
 package game;
 
-import GUI.ControlPanel;
-import Levels.Level1;
-import Levels.Level2;
-import Levels.Level3;
-import Levels.Level4;
+import GUI.VolumeSlider;
+import Levels.*;
 import city.cs.engine.SoundClip;
 import city.cs.engine.UserView;
 
-import javax.sound.sampled.LineUnavailableException;
-import javax.sound.sampled.UnsupportedAudioFileException;
 import javax.swing.*;
 import java.awt.*;
-import java.io.IOException;
 
 public class Game {
     private SoundClip gameMusic;
@@ -21,7 +15,7 @@ public class Game {
     private HollowKnightController controller;
     private JFrame frame;
     private UserView wideView;
-    private ControlPanel panel;
+    private VolumeSlider slider;
 
     public Game() {
 
@@ -44,8 +38,6 @@ public class Game {
 
         level.addStepListener(new Tracker(view, level.getHollowKnight()));
 
-
-
         // Frame
         frame = new JFrame("Hollow Knight Start");
         frame.add(view);
@@ -53,8 +45,8 @@ public class Game {
         //Gives overview at the bottom of the screen.
         updateFrame();
 
-        panel = new ControlPanel();
-        frame.add(panel, BorderLayout.WEST);
+
+        frame.add(VolumeSlider.createSlider(), BorderLayout.WEST);
 
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setLocationByPlatform(true);
@@ -79,10 +71,11 @@ public class Game {
     }
 
     public void updateFrame(){
-        wideView = new UserView(level, 900, 100);
-        wideView.setZoom(3);
-        frame.remove(wideView);
-        frame.add(wideView, BorderLayout.SOUTH);
+        if (this.wideView != null)
+            frame.remove(this.wideView);
+        this.wideView = new UserView(level, 900, 100);
+        this.wideView.setZoom(3);
+        frame.add(this.wideView, BorderLayout.SOUTH);
         frame.pack();
     }
 
@@ -91,12 +84,11 @@ public class Game {
         if (level instanceof Level1){
             //stop the current level
             level.stop();
-            frame.remove(wideView);
             level.gameMusic.stop();
             //create the new (appropriate) level
             //level now refers to new level
             level = new Level2(this);
-            //change the view to look into new level
+            //change the view to look into new leveldjdjwj
             view.setWorld(level);
             //change the controller to control the
             //student in the new world
@@ -111,7 +103,6 @@ public class Game {
         else if (level instanceof Level2){
             //stop the current level
             level.stop();
-            frame.remove(wideView);
             level.gameMusic.stop();
             //create the new (appropriate) level
             //level now refers to new level
@@ -131,7 +122,6 @@ public class Game {
         else if (level instanceof Level3){
             //stop the current level
             level.stop();
-            frame.remove(wideView);
             level.gameMusic.stop();
             //create the new (appropriate) level
             //level now refers to new level
@@ -152,6 +142,7 @@ public class Game {
             System.out.println("Well done! Game complete.");
             System.exit(0);
         }
+
     }
 
     public static void main(String[] args) {

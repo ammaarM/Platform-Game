@@ -3,7 +3,7 @@ package Collisions;
 import city.cs.engine.CollisionEvent;
 import city.cs.engine.CollisionListener;
 import game.Game;
-import game.GameLevel;
+import Levels.GameLevel;
 import Models.Mob;
 
 public class Encounter implements CollisionListener {

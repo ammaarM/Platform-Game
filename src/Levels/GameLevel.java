@@ -1,13 +1,14 @@
-package game;
+package Levels;
 
 import Collisions.Encounter;
 import Models.HollowKnight;
 import Models.Mob;
 import city.cs.engine.SoundClip;
 import city.cs.engine.World;
+import game.Game;
 
 public abstract class GameLevel  extends World {
-    public SoundClip gameMusic;
+    public static SoundClip gameMusic;
     // declare models
     private HollowKnight hollowKnight;
     private Mob mob;

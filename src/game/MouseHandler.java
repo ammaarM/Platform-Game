@@ -1,7 +1,7 @@
 package game;
 
-import org.jbox2d.common.Vec2;
-import java.awt.*;
+import Levels.GameLevel;
+
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
