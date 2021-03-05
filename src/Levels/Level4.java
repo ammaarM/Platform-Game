@@ -40,10 +40,10 @@ public class Level4  extends GameLevel {
         getHollowKnight().addCollisionListener(new Collision(getHollowKnight()));
         getMob().addCollisionListener(new MobCollision(getMob()));
 
-        // make the ground
-        Shape shape = new BoxShape(11, 0.5f);
+        // Ground
+        Shape shape = new BoxShape(50, 0.5f);
         StaticBody ground = new StaticBody(this, shape);
-        ground.setPosition(new Vec2(0f, -11.5f));
+        ground.setPosition(new Vec2(0f, -13f));
 
         // make some walls
         Shape wallShape = new BoxShape(0.5f, 6f);

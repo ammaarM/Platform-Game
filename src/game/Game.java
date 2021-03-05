@@ -10,7 +10,7 @@ import java.awt.*;
 
 public class Game {
     private SoundClip gameMusic;
-    private GameLevel level;
+    public static GameLevel level;
     private GameView view;
     private HollowKnightController controller;
     private JFrame frame;
@@ -83,13 +83,33 @@ public class Game {
 
         if (level instanceof Level1){
             //stop the current level
+            frame.remove(wideView);
+            frame.remove(view);
             level.stop();
             level.gameMusic.stop();
             //create the new (appropriate) level
             //level now refers to new level
             level = new Level2(this);
-            //change the view to look into new leveldjdjwj
+            //change the view to look into new level
+            view = new GameView(level, 1366, 768);
+
+            view.setZoom(20);
+
+            //The program will now detect mouse Clicks
+            view.addMouseListener(new MouseHandler(level, view));
+            //Listener allows the hollow knight model to be controlled.
+            controller = new HollowKnightController(level.getHollowKnight());
+            view.addKeyListener(controller);
+
+            MouseHandler mh = new MouseHandler(level, view);
+            view.addMouseListener(mh);
+            view.addMouseListener(new Focus(view));
+
+            level.addStepListener(new Tracker(view, level.getHollowKnight()));
+            frame.add(view);
             view.setWorld(level);
+
+
             //change the controller to control the
             //student in the new world
             controller.updateHollowKnight(level.getHollowKnight());
@@ -145,6 +165,9 @@ public class Game {
 
     }
 
+    public static GameLevel getLevel(){
+        return level;
+    }
     public static void main(String[] args) {
         new Game();
     }

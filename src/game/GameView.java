@@ -1,5 +1,8 @@
 package game;
 
+import Levels.GameLevel;
+import Levels.Level1;
+import Levels.Level2;
 import Models.HollowKnight;
 import city.cs.engine.UserView;
 import city.cs.engine.World;
@@ -9,11 +12,17 @@ import java.awt.*;
 
 public class GameView extends UserView {
     private Image background;
+    private GameLevel level = Game.getLevel();
 
     public GameView(World w, int width, int height) {
         super(w, width, height);
         //sets the background image
-        background = new ImageIcon("data/background.png").getImage();
+        if (Game.level instanceof Level1){
+            background = new ImageIcon("data/background.png").getImage();
+        } else if (Game.level instanceof Level2){
+            background = new ImageIcon("data/backgroundold.jpg").getImage();
+        }
+
     }
 
     @Override

@@ -10,10 +10,10 @@ import java.awt.*;
 public class VolumeSlider extends JPanel implements ChangeListener {
 
     // slider
-    public static JSlider b;
+    private static JSlider volumeSlider;
     // label
-    static JLabel l;
-    public static double volume;
+    static JLabel volumeLabel;
+    private static double volume;
     private static JPanel mainPanel;
 
     //private GameLevel level = Game.;
@@ -24,28 +24,28 @@ public class VolumeSlider extends JPanel implements ChangeListener {
         // create a object
         VolumeSlider s = new VolumeSlider();
         // create label
-        l = new JLabel();
+        volumeLabel = new JLabel();
         // create a panel
         //JPanel p = new JPanel();
 
         // create a slider
-        b = new JSlider(0, 100, 50);
+        volumeSlider = new JSlider(0, 100, 50);
         // paint the ticks and tracks
-        b.setPaintTrack(true);
-        b.setPaintTicks(true);
-        b.setPaintLabels(true);
+        volumeSlider.setPaintTrack(true);
+        volumeSlider.setPaintTicks(true);
+        volumeSlider.setPaintLabels(true);
         // set spacing
-        b.setMajorTickSpacing(50);
-        b.setMinorTickSpacing(5);
+        volumeSlider.setMajorTickSpacing(50);
+        volumeSlider.setMinorTickSpacing(5);
         // setChangeListener
-        b.addChangeListener(s);
+        volumeSlider.addChangeListener(s);
         // set orientation of slider
-        b.setOrientation(SwingConstants.VERTICAL);
+        volumeSlider.setOrientation(SwingConstants.VERTICAL);
         // set Font for the slider
-        b.setFont(new Font("Serif", Font.ITALIC, 20));
+        volumeSlider.setFont(new Font("Serif", Font.ITALIC, 20));
         // add slider to panel
-        s.add(b);
-        s.add(l);
+        s.add(volumeSlider);
+        s.add(volumeLabel);
 
         // set the size of frame
         s.setSize(300, 300);
@@ -60,7 +60,7 @@ public class VolumeSlider extends JPanel implements ChangeListener {
     }
 
     public static Double getVolume() {
-        double temp = b.getValue();
+        double temp = volumeSlider.getValue();
         if (temp>0) {
             volume = temp / 100;
         }
