@@ -22,11 +22,7 @@ public class VolumeSlider extends JPanel implements ChangeListener {
     // main class
     public static VolumeSlider createSlider() {
         // create a object
-        VolumeSlider s = new VolumeSlider();
-        // create label
-        volumeLabel = new JLabel();
-        // create a panel
-        //JPanel p = new JPanel();
+        VolumeSlider slide = new VolumeSlider();
 
         // create a slider
         volumeSlider = new JSlider(0, 100, 50);
@@ -36,21 +32,20 @@ public class VolumeSlider extends JPanel implements ChangeListener {
         volumeSlider.setPaintLabels(true);
         // set spacing
         volumeSlider.setMajorTickSpacing(50);
-        volumeSlider.setMinorTickSpacing(5);
+        volumeSlider.setMinorTickSpacing(10);
         // setChangeListener
-        volumeSlider.addChangeListener(s);
+        volumeSlider.addChangeListener(slide);
         // set orientation of slider
         volumeSlider.setOrientation(SwingConstants.VERTICAL);
         // set Font for the slider
-        volumeSlider.setFont(new Font("Serif", Font.ITALIC, 20));
+        volumeSlider.setFont(new Font("Arial", Font.ITALIC, 10));
         // add slider to panel
-        s.add(volumeSlider);
-        s.add(volumeLabel);
+        slide.add(volumeSlider);
 
         // set the size of frame
-        s.setSize(300, 300);
+        slide.setSize(300, 300);
         //f.show();
-        return s;
+        return slide;
     }
     // if JSlider value is changed
     public void stateChanged(ChangeEvent e) {

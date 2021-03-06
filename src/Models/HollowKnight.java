@@ -6,8 +6,8 @@ public class HollowKnight extends Walker {
     //Sets the hit box and the image for the model
     private static final Shape hollowShape = new PolygonShape(-0.81f,2.24f, -0.99f,-0.29f, -1.0f,-1.69f, -0.79f,-2.21f, 0.67f,-2.24f, 1.15f,-0.28f, 1.17f,2.2f);
     private static final BodyImage image = new BodyImage("data/stillRight.png", 5f);
-    private static int kills;
-    private static int health;
+    private static int kills = 0;
+    private static int health = 0;
 
     public HollowKnight(World world) {
         super(world, hollowShape);

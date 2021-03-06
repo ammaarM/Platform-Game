@@ -33,7 +33,7 @@ public class Level2  extends GameLevel {
         //we still need to set the positions of the student
         //and professor
         getHollowKnight().setPosition(new Vec2(8, -10));
-        getMob().setPosition(new Vec2(-8,-13));
+        getMob().setPosition(new Vec2(-8,-10));
 
         //we're setting up BooksPickup here though we could
         //also add it to the GameLevel class

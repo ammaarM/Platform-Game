@@ -1,10 +1,11 @@
 package Collisions;
 
+import Models.Gate;
 import city.cs.engine.CollisionEvent;
 import city.cs.engine.CollisionListener;
 import game.Game;
 import Levels.GameLevel;
-import Models.Mob;
+
 
 public class Encounter implements CollisionListener {
     private GameLevel level;
@@ -19,7 +20,7 @@ public class Encounter implements CollisionListener {
         //if student collided with professor and the
         //conditions for completing the level are fulfilled
         //goToNextLevel
-        if (e.getOtherBody() instanceof Mob
+        if (e.getOtherBody() instanceof Gate
                 && level.isComplete()){
             game.goToNextLevel();
         }

@@ -1,8 +1,6 @@
 package game;
 
-import Levels.GameLevel;
-import Levels.Level1;
-import Levels.Level2;
+import Levels.*;
 import Models.HollowKnight;
 import city.cs.engine.UserView;
 import city.cs.engine.World;
@@ -18,9 +16,13 @@ public class GameView extends UserView {
         super(w, width, height);
         //sets the background image
         if (Game.level instanceof Level1){
-            background = new ImageIcon("data/background.png").getImage();
+            background = new ImageIcon("data/background.jpg").getImage();
         } else if (Game.level instanceof Level2){
-            background = new ImageIcon("data/backgroundold.jpg").getImage();
+            background = new ImageIcon("data/background2.png").getImage();
+        } else if (Game.level instanceof Level3){
+            background = new ImageIcon("data/background3.jpg").getImage();
+        } else if (Game.level instanceof Level4){
+            background = new ImageIcon("data/background4.jpg").getImage();
         }
 
     }
