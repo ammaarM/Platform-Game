@@ -20,7 +20,6 @@ public abstract class GameLevel  extends World {
     private Gate gate;
 
     public GameLevel(Game game) {
-        super(144);
 
         hollowKnight = new HollowKnight(this);
         mob = new Mob(this);

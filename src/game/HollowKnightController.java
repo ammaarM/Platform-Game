@@ -45,13 +45,13 @@ public class HollowKnightController implements KeyListener {
         // other key commands omitted
         if (code == KeyEvent.VK_A) {
             //Tells the model to walk left
-            hollowKnight.startWalking(-WALKING_SPEED*4);
+            hollowKnight.startWalking(-WALKING_SPEED*2);
             hollowKnight.removeAllImages();
             hollowKnight.addImage(leftImage);
             pCode=0;
         } else if (code == KeyEvent.VK_D) {
             //Tells the model to walk right
-            hollowKnight.startWalking(WALKING_SPEED*4);
+            hollowKnight.startWalking(WALKING_SPEED*2);
             hollowKnight.removeAllImages();
             hollowKnight.addImage(rightImage);
             pCode=1;
@@ -60,12 +60,12 @@ public class HollowKnightController implements KeyListener {
             if(pCode==0){
                 //Does a different animation for each direction that is being jumped
                 hollowKnight.setGravityScale(0.5f);
-                hollowKnight.jump(15);
+                hollowKnight.jump(12);
                 hollowKnight.removeAllImages();
                 hollowKnight.addImage(jumpInvImage);
             }else if(pCode==1) {
                 hollowKnight.setGravityScale(0.5f);
-                hollowKnight.jump(15);
+                hollowKnight.jump(12);
                 hollowKnight.removeAllImages();
                 hollowKnight.addImage(jumpImage);
             }
