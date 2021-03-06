@@ -37,7 +37,7 @@ public class Level2  extends GameLevel {
 
         //we're setting up BooksPickup here though we could
         //also add it to the GameLevel class
-        getHollowKnight().addCollisionListener(new Collision(getHollowKnight()));
+        //getHollowKnight().addCollisionListener(new Collision(getHollowKnight()));
         getMob().addCollisionListener(new MobCollision(getMob()));
 
         // Ground
@@ -45,15 +45,22 @@ public class Level2  extends GameLevel {
         StaticBody ground = new StaticBody(this, shape);
         ground.setPosition(new Vec2(0f, -13f));
 
-        // make some walls
-        Shape wallShape = new BoxShape(0.5f, 6f);
-        StaticBody wall1 = new StaticBody(this, wallShape);
-        wall1.setPosition(new Vec2(-11.5f, -6));
+        // make some platforms
+        Shape platformShape = new BoxShape(6f, 0.5f);
+        StaticBody platform1 = new StaticBody(this, platformShape);
+        platform1.setPosition(new Vec2(20f, -5));
 
-        StaticBody wall2 = new StaticBody(this, wallShape);
-        wall2.setPosition(new Vec2(11.5f, -6));
+        StaticBody platform2 = new StaticBody(this, platformShape);
+        platform2.setPosition(new Vec2(-20f, -5));
 
+        StaticBody platform3 = new StaticBody(this, platformShape);
+        platform3.setPosition(new Vec2(0, 5));
 
+        StaticBody platform4 = new StaticBody(this, platformShape);
+        platform4.setPosition(new Vec2(20f, 10));
+
+        StaticBody platform5 = new StaticBody(this, platformShape);
+        platform5.setPosition(new Vec2(-20f, 10));
 
     }
     @Override

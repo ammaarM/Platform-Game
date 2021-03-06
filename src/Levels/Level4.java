@@ -1,12 +1,12 @@
 package Levels;
 
+import Collisions.Mob3Collision;
 import city.cs.engine.BoxShape;
 import city.cs.engine.Shape;
 import city.cs.engine.SoundClip;
 import city.cs.engine.StaticBody;
 import Collisions.Collision;
 import game.Game;
-import Collisions.MobCollision;
 import org.jbox2d.common.Vec2;
 
 import javax.sound.sampled.LineUnavailableException;
@@ -33,27 +33,55 @@ public class Level4  extends GameLevel {
         //we still need to set the positions of the student
         //and professor
         getHollowKnight().setPosition(new Vec2(8, -10));
-        getMob().setPosition(new Vec2(-8,-10));
+        getMob3().setPosition(new Vec2(-8,-10));
 
         //we're setting up BooksPickup here though we could
         //also add it to the GameLevel class
-        getHollowKnight().addCollisionListener(new Collision(getHollowKnight()));
-        getMob().addCollisionListener(new MobCollision(getMob()));
+        //getHollowKnight().addCollisionListener(new Collision(getHollowKnight()));
+        getMob3().addCollisionListener(new Mob3Collision(getMob3()));
 
         // Ground
         Shape shape = new BoxShape(50, 0.5f);
         StaticBody ground = new StaticBody(this, shape);
         ground.setPosition(new Vec2(0f, -13f));
 
-        // make some walls
-        Shape wallShape = new BoxShape(0.5f, 6f);
-        StaticBody wall1 = new StaticBody(this, wallShape);
-        wall1.setPosition(new Vec2(-11.5f, -6));
+        // make some platforms
+        Shape platformShape = new BoxShape(6f, 0.5f);
+        StaticBody platform1 = new StaticBody(this, platformShape);
+        platform1.setPosition(new Vec2(10f, -5));
 
-        StaticBody wall2 = new StaticBody(this, wallShape);
-        wall2.setPosition(new Vec2(11.5f, -6));
+        StaticBody platform2 = new StaticBody(this, platformShape);
+        platform2.setPosition(new Vec2(-10f, -5));
 
+        StaticBody platform3 = new StaticBody(this, platformShape);
+        platform3.setPosition(new Vec2(10f, 5));
 
+        StaticBody platform4 = new StaticBody(this, platformShape);
+        platform4.setPosition(new Vec2(-10f, 5));
+
+        StaticBody platform5 = new StaticBody(this, platformShape);
+        platform5.setPosition(new Vec2(30f, -5));
+
+        StaticBody platform6 = new StaticBody(this, platformShape);
+        platform6.setPosition(new Vec2(-30f, -5));
+        
+        StaticBody platform7 = new StaticBody(this, platformShape);
+        platform7.setPosition(new Vec2(30f, 5));
+
+        StaticBody platform8 = new StaticBody(this, platformShape);
+        platform8.setPosition(new Vec2(-30f, 5));
+
+        StaticBody platform9 = new StaticBody(this, platformShape);
+        platform9.setPosition(new Vec2(10f, 15));
+
+        StaticBody platform10 = new StaticBody(this, platformShape);
+        platform10.setPosition(new Vec2(-10f, 15));
+
+        StaticBody platform11 = new StaticBody(this, platformShape);
+        platform11.setPosition(new Vec2(30f, 15));
+
+        StaticBody platform12 = new StaticBody(this, platformShape);
+        platform12.setPosition(new Vec2(-30f, 15));
 
     }
     @Override

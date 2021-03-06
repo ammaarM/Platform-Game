@@ -16,8 +16,12 @@ public class HollowKnightController implements KeyListener {
     private static final float WALKING_SPEED = 4;
 
     private HollowKnight hollowKnight;
+    private GameView view;
 
-    public HollowKnightController(HollowKnight h){ hollowKnight = h; }
+    public HollowKnightController(HollowKnight h, GameView v){
+        hollowKnight = h;
+        this.view = v;
+    }
     //These are all the new images that the model takes when moving.
     private static final BodyImage stillRight = new BodyImage("data/stillRight.png", 5f);
     private static final BodyImage stillLeft = new BodyImage("data/stillLeft.png", 5f);
@@ -36,17 +40,18 @@ public class HollowKnightController implements KeyListener {
 
     @Override
     public void keyPressed(KeyEvent e) {
+        view.requestFocus();
         int code = e.getKeyCode();
         // other key commands omitted
         if (code == KeyEvent.VK_A) {
             //Tells the model to walk left
-            hollowKnight.startWalking(-WALKING_SPEED*2);
+            hollowKnight.startWalking(-WALKING_SPEED*4);
             hollowKnight.removeAllImages();
             hollowKnight.addImage(leftImage);
             pCode=0;
         } else if (code == KeyEvent.VK_D) {
             //Tells the model to walk right
-            hollowKnight.startWalking(WALKING_SPEED*2);
+            hollowKnight.startWalking(WALKING_SPEED*4);
             hollowKnight.removeAllImages();
             hollowKnight.addImage(rightImage);
             pCode=1;
@@ -55,12 +60,12 @@ public class HollowKnightController implements KeyListener {
             if(pCode==0){
                 //Does a different animation for each direction that is being jumped
                 hollowKnight.setGravityScale(0.5f);
-                hollowKnight.jump(12);
+                hollowKnight.jump(15);
                 hollowKnight.removeAllImages();
                 hollowKnight.addImage(jumpInvImage);
             }else if(pCode==1) {
                 hollowKnight.setGravityScale(0.5f);
-                hollowKnight.jump(12);
+                hollowKnight.jump(15);
                 hollowKnight.removeAllImages();
                 hollowKnight.addImage(jumpImage);
             }

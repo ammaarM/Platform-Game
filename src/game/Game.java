@@ -1,5 +1,6 @@
 package game;
 
+import GUI.GUIButton;
 import GUI.VolumeSlider;
 import Levels.*;
 import city.cs.engine.SoundClip;
@@ -19,6 +20,7 @@ public class Game {
 
     public Game() {
 
+
         // Initialise level
         level = new Level1(this);
 
@@ -33,6 +35,7 @@ public class Game {
 
 
         frame.add(VolumeSlider.createSlider(), BorderLayout.WEST);
+        frame.add(GUIButton.createButton(),BorderLayout.NORTH);
 
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setLocationByPlatform(true);
@@ -59,7 +62,7 @@ public class Game {
     public void updateFrame(){
         if (this.wideView != null)
             frame.remove(this.wideView);
-        this.wideView = new UserView(level, 900, 100);
+        this.wideView = new UserView(level, 900, 200);
         this.wideView.setZoom(3);
         frame.add(this.wideView, BorderLayout.SOUTH);
         frame.pack();
@@ -73,12 +76,13 @@ public class Game {
         //The program will now detect mouse Clicks
         view.addMouseListener(new MouseHandler(level, view));
         //Listener allows the hollow knight model to be controlled.
-        controller = new HollowKnightController(level.getHollowKnight());
+        controller = new HollowKnightController(level.getHollowKnight(), view);
         view.addKeyListener(controller);
 
         MouseHandler mh = new MouseHandler(level, view);
         view.addMouseListener(mh);
         view.addMouseListener(new Focus(view));
+        view.requestFocus();
 
         level.addStepListener(new Tracker(view, level.getHollowKnight()));
     }

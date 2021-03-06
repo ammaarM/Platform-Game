@@ -1,5 +1,7 @@
 package Collisions;
 
+import Models.Mob2;
+import Models.Mob3;
 import city.cs.engine.CollisionEvent;
 import city.cs.engine.CollisionListener;
 import Models.HollowKnight;
@@ -17,9 +19,11 @@ public class Collision implements CollisionListener {
     @Override
     public void collide(CollisionEvent e) {
         if (e.getOtherBody() instanceof Mob) {
-            //hollowKnight.destroy();
             HollowKnight.setHealth();
-            //System.out.println("GAME OVER!!!");
+        }else if(e.getOtherBody() instanceof Mob2){
+            HollowKnight.setHealth();
+        }else if(e.getOtherBody() instanceof Mob3){
+            HollowKnight.setHealth();
         }
     }
 }

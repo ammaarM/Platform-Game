@@ -15,7 +15,6 @@ public class SlashInv extends DynamicBody {
     static {
         try {
             slashSound = new SoundClip("data/ES_Whoosh Pan - SFX Producer.wav");
-            System.out.println("Loading slash sound");
         } catch (UnsupportedAudioFileException | IOException | LineUnavailableException e) {
             System.out.println(e);
         }

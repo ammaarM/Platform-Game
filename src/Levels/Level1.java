@@ -43,7 +43,7 @@ public class Level1 extends GameLevel {
         // Models
         getHollowKnight().setPosition(new Vec2(-8, -10));
         getMob().setPosition(new Vec2(8, -10));
-        getHollowKnight().addCollisionListener(new Collision(getHollowKnight()));
+        //getHollowKnight().addCollisionListener(new Collision(getHollowKnight()));
         getMob().addCollisionListener(new MobCollision(getMob()));
 
     }

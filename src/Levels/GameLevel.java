@@ -1,5 +1,6 @@
 package Levels;
 
+import Collisions.Collision;
 import Collisions.Encounter;
 import Models.HollowKnight;
 import Models.*;
@@ -19,6 +20,7 @@ public abstract class GameLevel  extends World {
     private Gate gate;
 
     public GameLevel(Game game) {
+        super(144);
 
         hollowKnight = new HollowKnight(this);
         mob = new Mob(this);
@@ -33,6 +35,7 @@ public abstract class GameLevel  extends World {
 
         Encounter encounter = new Encounter(this, game);
         hollowKnight.addCollisionListener(encounter);
+        hollowKnight.addCollisionListener(new Collision(hollowKnight));
 
     }
 

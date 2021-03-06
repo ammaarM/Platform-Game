@@ -2,10 +2,14 @@ package GUI;
 
 import Levels.GameLevel;
 import city.cs.engine.SoundClip;
+import game.Game;
+
 import javax.swing.*;
 import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 public class VolumeSlider extends JPanel implements ChangeListener {
 
@@ -15,6 +19,9 @@ public class VolumeSlider extends JPanel implements ChangeListener {
     static JLabel volumeLabel;
     private static double volume;
     private static JPanel mainPanel;
+    private static JButton pauseButton;
+    private static JButton quitButton;
+    private static int state = 0;
 
     //private GameLevel level = Game.;
     private static SoundClip gameMusic;
@@ -29,7 +36,6 @@ public class VolumeSlider extends JPanel implements ChangeListener {
         // paint the ticks and tracks
         volumeSlider.setPaintTrack(true);
         volumeSlider.setPaintTicks(true);
-        volumeSlider.setPaintLabels(true);
         // set spacing
         volumeSlider.setMajorTickSpacing(50);
         volumeSlider.setMinorTickSpacing(10);
@@ -44,7 +50,6 @@ public class VolumeSlider extends JPanel implements ChangeListener {
 
         // set the size of frame
         slide.setSize(300, 300);
-        //f.show();
         return slide;
     }
     // if JSlider value is changed
