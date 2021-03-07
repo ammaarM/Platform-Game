@@ -16,7 +16,7 @@ public class Game {
     private HollowKnightController controller;
     private JFrame frame;
     private UserView wideView;
-    private VolumeSlider slider;
+
 
     public Game() {
 

@@ -36,7 +36,7 @@ public class GameView extends UserView {
     protected void paintForeground(Graphics2D g) {
         g.setColor(Color.WHITE);
         g.drawString("Kills: " + HollowKnight.getKills(), 10, 20);
-        g.drawString("HP: " + HollowKnight.getHealth(), 100, 20 );
+        g.drawString("HP: " + HollowKnightController.getHealth(), 100, 20 );
     }
 }
 

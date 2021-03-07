@@ -17,10 +17,20 @@ public class HollowKnightController implements KeyListener {
 
     private HollowKnight hollowKnight;
     private GameView view;
+    private static int health = 10;
 
     public HollowKnightController(HollowKnight h, GameView v){
         hollowKnight = h;
         this.view = v;
+    }
+    public static int getHealth(){ return health;}
+    public static void setHealth(){
+        health--;
+        System.out.println("HP: " + health);
+        if(health == 0){
+            System.out.println("Your dead");
+            System.exit(0);
+        }
     }
     //These are all the new images that the model takes when moving.
     private static final BodyImage stillRight = new BodyImage("data/stillRight.png", 5f);

@@ -16,10 +16,7 @@ import java.io.IOException;
 public class Level2  extends GameLevel {
 
     public Level2(Game game){
-        //the base class will create the student, professor
-        //and the ProfessorEncounter
         super(game);
-
         try {
             gameMusic = new SoundClip("data/Hollow Knight OST - Enter Hallownest.wav");   // Open an audio input stream
             gameMusic.loop();  // Set it to continuous playback (looping)

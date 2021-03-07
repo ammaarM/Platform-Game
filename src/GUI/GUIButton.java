@@ -14,22 +14,26 @@ public class GUIButton extends JPanel {
 
     public static GUIButton createButton(){
         GUIButton but = new GUIButton();
-
+        //Makes new JButton
         pauseButton = new JButton("Pause/Play");
+        //Sets the font for JButton
         pauseButton.setFont(new Font("Arial", Font.ITALIC, 10));
         pauseButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 if (state == 0){
+                    //pauses the game
+                    System.out.println("Game is paused");
                     Game.level.stop();
                     state = 1;
                 }else{
+                    System.out.println("Game is unpaused");
                     Game.level.start();
                     state = 0;
                 }
             }
         });
-        pauseButton.setLocation(0, -100);
+        //adds the button tot he JPanel
         but.add(pauseButton);
 
 
@@ -38,11 +42,12 @@ public class GUIButton extends JPanel {
         quitButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                Game.getLevel().stop();
-                Game.level.start();
+                //closes the game when the quit button is triggered.
+                System.exit(0);
             }
         });
 
+        //adds the button tot he JPanel
         but.add(quitButton);
 
         return but;
