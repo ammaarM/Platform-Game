@@ -11,6 +11,7 @@ import javax.sound.sampled.UnsupportedAudioFileException;
 import java.io.IOException;
 
 public class Level1 extends GameLevel {
+    private Game game;
 
     public Level1(Game game) {
         super(game);
@@ -47,6 +48,13 @@ public class Level1 extends GameLevel {
         getMob().addCollisionListener(new MobCollision(getMob()));
 
     }
+
+
+    @Override
+    public String getLevelName(){
+        return "Level1";
+    }
+
 
     @Override
     public boolean isComplete() {

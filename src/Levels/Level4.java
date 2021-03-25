@@ -14,6 +14,7 @@ import javax.sound.sampled.UnsupportedAudioFileException;
 import java.io.IOException;
 
 public class Level4  extends GameLevel {
+    private Game game;
 
     public Level4(Game game){
         //the base class will create the student, professor
@@ -28,7 +29,7 @@ public class Level4  extends GameLevel {
             System.out.println(e);
         }
 
-        game.updateFrame();
+        //game.updateFrame();
 
         //we still need to set the positions of the student
         //and professor
@@ -84,6 +85,12 @@ public class Level4  extends GameLevel {
         platform12.setPosition(new Vec2(-30f, 15));
 
     }
+
+    @Override
+    public String getLevelName(){
+        return "Level4";
+    }
+
     @Override
     public boolean isComplete() {
         if (getHollowKnight().getKills() >= 10)

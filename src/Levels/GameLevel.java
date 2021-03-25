@@ -18,6 +18,7 @@ public abstract class GameLevel  extends World {
     private Mob2 mob2;
     private Mob3 mob3;
     private Gate gate;
+    private Game game;
 
     public GameLevel(Game game) {
 
@@ -39,7 +40,10 @@ public abstract class GameLevel  extends World {
         hollowKnight.addCollisionListener(encounter);
         hollowKnight.addCollisionListener(new Collision(hollowKnight));
 
+        this.game = game;
     }
+
+
 
     //getters for the levels to call the models.
     public HollowKnight getHollowKnight(){ return hollowKnight;}
@@ -47,5 +51,8 @@ public abstract class GameLevel  extends World {
     public Mob2 getMob2() { return mob2;}
     public Mob3 getMob3() { return mob3;}
 
+    public Game getGame() {return game;}
+
+    public abstract String getLevelName();
     public abstract boolean isComplete();
 }

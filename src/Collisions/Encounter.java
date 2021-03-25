@@ -22,7 +22,7 @@ public class Encounter implements CollisionListener {
         //goToNextLevel
         if (e.getOtherBody() instanceof Gate
                 && level.isComplete()){
-            game.goToNextLevel();
+            level.getGame().goToNextLevel();
         }
     }
 }

@@ -2,6 +2,7 @@ package game;
 
 import Collisions.SlashCollision;
 import Collisions.SlashInvCollision;
+import Levels.GameLevel;
 import Models.HollowKnight;
 import Models.Slash;
 import Models.SlashInv;
@@ -9,7 +10,10 @@ import city.cs.engine.BodyImage;
 
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
+import java.io.IOException;
+
 import org.jbox2d.common.Vec2;
+import saveLoad.GameSaverLoader;
 
 public class HollowKnightController implements KeyListener {
 
@@ -32,6 +36,10 @@ public class HollowKnightController implements KeyListener {
             System.exit(0);
         }
     }
+    public static void changeHealth(int h){
+        health = h;
+    }
+
     //These are all the new images that the model takes when moving.
     private static final BodyImage stillRight = new BodyImage("data/stillRight.png", 5f);
     private static final BodyImage stillLeft = new BodyImage("data/stillLeft.png", 5f);
@@ -42,6 +50,7 @@ public class HollowKnightController implements KeyListener {
     private static final BodyImage attackImage = new BodyImage("data/attack.gif", 5f);
     private static final BodyImage attackInvImage = new BodyImage("data/attackInv.gif", 5f);
     private int pCode = 1;
+    private Game game;
 
 
     @Override
@@ -99,6 +108,21 @@ public class HollowKnightController implements KeyListener {
                 slash.addCollisionListener(slashCollision);
                 slash.setPosition(selfPointInv);
                 slash.setLinearVelocity(new Vec2(50,0));
+            }
+        }else if (code == KeyEvent.VK_S){
+            System.out.println("Saving Game State");
+            try {
+                GameSaverLoader.save(Game.getLevel(), "data/save.txt");
+            } catch (IOException ioException) {
+                ioException.printStackTrace();
+            }
+        }
+        else if (code == KeyEvent.VK_L){
+            System.out.println("Loading Game State");
+            try {
+                GameSaverLoader.load(Game.getLevel(), "data/save.txt");
+            } catch (IOException ioException) {
+                ioException.printStackTrace();
             }
         }
     }

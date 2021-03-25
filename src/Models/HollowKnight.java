@@ -36,4 +36,9 @@ public class HollowKnight extends Walker {
             System.exit(0);
         }
     }
+
+
+    public static void changeKills(int k){
+        kills = k;
+    }
 }
