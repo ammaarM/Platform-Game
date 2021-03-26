@@ -110,20 +110,10 @@ public class HollowKnightController implements KeyListener {
                 slash.setLinearVelocity(new Vec2(50,0));
             }
         }else if (code == KeyEvent.VK_S){
-            System.out.println("Saving Game State");
-            try {
-                GameSaverLoader.save(Game.getLevel(), "data/save.txt");
-            } catch (IOException ioException) {
-                ioException.printStackTrace();
-            }
+
         }
         else if (code == KeyEvent.VK_L){
-            System.out.println("Loading Game State");
-            try {
-                GameSaverLoader.load(Game.getLevel(), "data/save.txt");
-            } catch (IOException ioException) {
-                ioException.printStackTrace();
-            }
+
         }
     }
 
