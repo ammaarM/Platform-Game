@@ -62,7 +62,6 @@ public class GameSaverLoader {
             reader = new BufferedReader(fr);
             String line = reader.readLine();
 
-            level.setHollowKnight(level.getHollowKnight());
             if (line.equals("Level1")){
                 level.getGame().setLevel(1);
             }else if(line.equals("Level2")){
@@ -86,33 +85,24 @@ public class GameSaverLoader {
                     int kills = Integer.parseInt(tokens[4]);
                     HollowKnightController.changeHealth(health);
                     HollowKnight.changeKills(kills);
-
-
-
                 } else if (tokens[0].equals("Mob")){
                     float x = Float.parseFloat(tokens[1]);
                     float y = Float.parseFloat(tokens[2]);
                     try {
                         level.getGame().locateMob(x, y);
-                    } catch (Exception e) {
-                        return null;
-                    }
+                    } catch (Exception e) {}
                 } else if (tokens[0].equals("Mob2")){
                     float x = Float.parseFloat(tokens[1]);
                     float y = Float.parseFloat(tokens[2]);
                     try {
                         level.getGame().locateMob2(x, y);
-                    } catch (Exception e) {
-                        return null;
-                    }
+                    } catch (Exception e) {}
                 } else if (tokens[0].equals("Mob3")){
                     float x = Float.parseFloat(tokens[1]);
                     float y = Float.parseFloat(tokens[2]);
                     try {
                         level.getGame().locateMob3(x, y);
-                    } catch (Exception e) {
-                        return null;
-                    }
+                    } catch (Exception e) {}
                 }
 
                 line = reader.readLine();

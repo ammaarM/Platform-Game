@@ -25,8 +25,6 @@ public class Game {
 
 
     public Game() {
-
-
         // Initialise level
         level = new Level1(this);
         level.populate(this);
@@ -34,7 +32,7 @@ public class Game {
         initLevel();
 
         // Frame
-        frame = new JFrame("Hollow Knight Start");
+        frame = new JFrame("Hollow Knight ");
         frame.add(view);
 
         //Gives overview at the bottom of the screen.
@@ -43,6 +41,12 @@ public class Game {
 
         frame.add(VolumeSlider.createSlider(), BorderLayout.WEST);
         frame.add(GUIButton.createButton(),BorderLayout.NORTH);
+
+        ImageIcon icon = new ImageIcon("data/icon.png");
+        frame.setIconImage(icon.getImage());
+        Color panel = new Color(78, 48, 84);
+
+        frame.setForeground(panel);
 
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setLocationByPlatform(true);
@@ -71,6 +75,8 @@ public class Game {
             frame.remove(this.wideView);
         this.wideView = new UserView(level, 900, 200);
         this.wideView.setZoom(3);
+        Color panel = new Color(78, 48, 84);
+        wideView.setBackground(panel);
         frame.add(this.wideView, BorderLayout.SOUTH);
         frame.pack();
     }
@@ -103,26 +109,32 @@ public class Game {
         level.gameMusic.stop();
         //create the new (appropriate) level
         //level now refers to new level
-        if (i == 1) {
-            level = new Level1(level.getGame());
-            Mob m = new Mob(level);
-            level.setMob(m);
-            m.addCollisionListener(new MobCollision(m));
-        } else if (i == 2){
-            level = new Level2(level.getGame());
-            Mob m = new Mob(level);
-            level.setMob(m);
-            m.addCollisionListener(new MobCollision(m));
-        } else if (i == 3){
-            level = new Level3(level.getGame());
-            Mob2 m2 = new Mob2(level);
-            level.setMob2(m2);
-            m2.addCollisionListener(new Mob2Collision(m2));
-        } else if (i == 4){
-            level = new Level4(level.getGame());
-            Mob3 m3 = new Mob3(level);
-            level.setMob3(m3);
-            m3.addCollisionListener(new Mob3Collision(m3));
+        switch (i) {
+            case 1:
+                level = new Level1(level.getGame());
+                Mob m = new Mob(level);
+                level.setMob(m);
+                m.addCollisionListener(new MobCollision(m));
+                break;
+            case 2:
+                level = new Level2(level.getGame());
+                m = new Mob(level);
+                level.setMob(m);
+                m.addCollisionListener(new MobCollision(m));
+                break;
+
+            case 3:
+                level = new Level3(level.getGame());
+                Mob2 m2 = new Mob2(level);
+                level.setMob2(m2);
+                m2.addCollisionListener(new Mob2Collision(m2));
+                break;
+            case 4:
+                level = new Level4(level.getGame());
+                Mob3 m3 = new Mob3(level);
+                level.setMob3(m3);
+                m3.addCollisionListener(new Mob3Collision(m3));
+                break;
         }
 
         HollowKnight h = new HollowKnight(level);
@@ -159,18 +171,16 @@ public class Game {
             frame.remove(wideView);
         wideView = new UserView(level, 900, 200);
         wideView.setZoom(3);
+        Color panel = new Color(78, 48, 84);
+        wideView.setBackground(panel);
         frame.add(wideView, BorderLayout.SOUTH);
         frame.pack();
 
         //start the simulation in the new level
         level.start();
     }
-    public static void locateHollowKnight(float x ,float y){
-        level.getHollowKnight().setPosition(new Vec2(x, y));
-    }
-    public static void locateMob(float x ,float y){
-        level.getMob().setPosition(new Vec2(x, y));
-    }
+    public static void locateHollowKnight(float x ,float y){ level.getHollowKnight().setPosition(new Vec2(x, y)); }
+    public static void locateMob(float x ,float y){ level.getMob().setPosition(new Vec2(x, y)); }
     public static void locateMob2(float x ,float y){
         level.getMob2().setPosition(new Vec2(x, y));
     }

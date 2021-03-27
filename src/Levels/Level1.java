@@ -62,7 +62,7 @@ public class Level1 extends GameLevel {
 
     @Override
     public boolean isComplete() {
-        if (getHollowKnight().getKills() >= 5)
+        if (getHollowKnight().getKills() >= 3)
             return true;
         else
             return false;

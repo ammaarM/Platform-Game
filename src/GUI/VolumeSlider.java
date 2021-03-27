@@ -23,8 +23,11 @@ public class VolumeSlider extends JPanel implements ChangeListener {
     public static VolumeSlider createSlider() {
         // create a object
         VolumeSlider slide = new VolumeSlider();
+        Color panel = new Color(78, 48, 84);
+        slide.setBackground(panel);
         // create a slider
         volumeSlider = new JSlider(0, 100, 50);
+        volumeSlider.setBackground(panel);
         // paint the ticks and tracks
         volumeSlider.setPaintTrack(true);
         volumeSlider.setPaintTicks(true);
@@ -47,7 +50,7 @@ public class VolumeSlider extends JPanel implements ChangeListener {
 
     // if JSlider value is changed
     public void stateChanged(ChangeEvent e) {
-        System.out.println(getVolume());
+        getVolume();
         GameLevel.gameMusic.setVolume(volume);
     }
 
