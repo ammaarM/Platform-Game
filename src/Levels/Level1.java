@@ -41,14 +41,18 @@ public class Level1 extends GameLevel {
         StaticBody platform2 = new StaticBody(this, platform2Shape);
         platform2.setPosition(new Vec2(-8f, 4f));
 
-        // Models
-        getHollowKnight().setPosition(new Vec2(-8, -10));
-        getMob().setPosition(new Vec2(8, -10));
-        //getHollowKnight().addCollisionListener(new Collision(getHollowKnight()));
-        getMob().addCollisionListener(new MobCollision(getMob()));
+
 
     }
 
+    @Override
+    public void populate(Game game) {
+        super.populate(game);
+        // Models
+        getHollowKnight().setPosition(new Vec2(-8, -10));
+        getMob().setPosition(new Vec2(8, -10));
+        getMob().addCollisionListener(new MobCollision(getMob()));
+    }
 
     @Override
     public String getLevelName(){

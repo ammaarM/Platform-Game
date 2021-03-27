@@ -26,17 +26,8 @@ public class Level2  extends GameLevel {
             System.out.println(e);
         }
 
-        //game.updateFrame();
 
-        //we still need to set the positions of the student
-        //and professor
-        getHollowKnight().setPosition(new Vec2(8, -10));
-        getMob().setPosition(new Vec2(-8,-10));
 
-        //we're setting up BooksPickup here though we could
-        //also add it to the GameLevel class
-        //getHollowKnight().addCollisionListener(new Collision(getHollowKnight()));
-        getMob().addCollisionListener(new MobCollision(getMob()));
 
         // Ground
         Shape shape = new BoxShape(50, 0.5f);
@@ -60,6 +51,16 @@ public class Level2  extends GameLevel {
         StaticBody platform5 = new StaticBody(this, platformShape);
         platform5.setPosition(new Vec2(-20f, 10));
 
+    }
+
+    @Override
+    public void populate(Game game) {
+        super.populate(game);
+        getHollowKnight().setPosition(new Vec2(8, -10));
+        getMob().setPosition(new Vec2(-8,-10));
+
+        //also add it to the GameLevel class
+        getMob().addCollisionListener(new MobCollision(getMob()));
     }
 
     @Override

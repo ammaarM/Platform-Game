@@ -17,9 +17,6 @@ public class Encounter implements CollisionListener {
     }
     @Override
     public void collide(CollisionEvent e) {
-        //if student collided with professor and the
-        //conditions for completing the level are fulfilled
-        //goToNextLevel
         if (e.getOtherBody() instanceof Gate
                 && level.isComplete()){
             level.getGame().goToNextLevel();

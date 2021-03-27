@@ -1,6 +1,7 @@
 package Levels;
 
 import Collisions.Mob3Collision;
+import Collisions.MobCollision;
 import city.cs.engine.BoxShape;
 import city.cs.engine.Shape;
 import city.cs.engine.SoundClip;
@@ -29,17 +30,7 @@ public class Level4  extends GameLevel {
             System.out.println(e);
         }
 
-        //game.updateFrame();
 
-        //we still need to set the positions of the student
-        //and professor
-        getHollowKnight().setPosition(new Vec2(8, -10));
-        getMob3().setPosition(new Vec2(-8,-10));
-
-        //we're setting up BooksPickup here though we could
-        //also add it to the GameLevel class
-        //getHollowKnight().addCollisionListener(new Collision(getHollowKnight()));
-        getMob3().addCollisionListener(new Mob3Collision(getMob3()));
 
         // Ground
         Shape shape = new BoxShape(50, 0.5f);
@@ -84,6 +75,14 @@ public class Level4  extends GameLevel {
         StaticBody platform12 = new StaticBody(this, platformShape);
         platform12.setPosition(new Vec2(-30f, 15));
 
+    }
+
+    @Override
+    public void populate(Game game) {
+        super.populate(game);
+        getHollowKnight().setPosition(new Vec2(8, -10));
+        getMob3().setPosition(new Vec2(-8,-10));
+        getMob3().addCollisionListener(new Mob3Collision(getMob3()));
     }
 
     @Override
